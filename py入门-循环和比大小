@@ -1,0 +1,28 @@
+今天学了下用py循环来做小游戏
+刚开始用if和else来写，结果游戏进行两回合自动停止（除非一次猜对，好吧看来if不能循环）
+然后试了下while，调试了一下才发现这东西原来直接在true情况下循环tab后面的语句，false就输出不在tab后面的语句（不太懂如果和下面的语句冲突了该怎么办）
+还有一个在最开始的错误！
+总是提示我int和str无法比较
+后来才知道要把输入值来一个
+player = input()
+guess = int(player)
+最后才能answer != guess
+不过到最后还是做出来了，随机数语句直接上网找的，想用随机数语句要在程序开始加一个 import random
+还有个小tips：框住所有要tab的语句，可以全体tab
+
+最后把代码放出来
+
+import random
+answer = random.randint(0,99)
+player = input("猜猜是什么数字吧~")
+guess = int(player)
+while answer != guess :
+    if answer < guess :
+        print("猜错啦，再小点")
+        player = input("猜猜是什么数字吧~")
+        guess = int(player)
+    else :
+        print("猜错啦，再大点")
+        player = input("猜猜是什么数字吧~")
+        guess = int(player)
+print("猜对啦！棒棒XD")
