@@ -1,0 +1,60 @@
+猜数字的游戏要添加一个新功能：猜错n(3)次就直接结束
+改了5，6次没改对（捂脸）
+隔了几天没用，if和while傻傻分不清，脑子里想的全是循环嵌套
+后来终于改出来了，比原来多了9行（25行）
+最后还是改进了下，变成了21行，如下
+
+import random
+answer = random.randint(0,99)
+player = input("猜猜是什么数字吧:")
+guess = int(player)
+time = 1
+end = "答错3次啦，游戏结束"
+while time < 3 :
+    time = time + 1
+    if answer != guess :
+        if answer < guess :
+            print("猜错啦，再小点")
+            player = input("猜猜是什么数字吧:")
+            guess = int(player)
+        else :
+            print("猜错啦，再大点")
+            player = input("猜猜是什么数字吧:")
+            guess = int(player)
+    else :
+        time = time + 3
+        end = "猜对啦！棒棒XD"
+print(end)
+
+其实还可以将猜数字次数可控，但我不想加了，这个挺简单的，没必要
+
+（附上24行的代码，很不美观）
+import random
+answer = random.randint(0,99)
+player = input("猜猜是什么数字吧:")
+guess = int(player)
+time = 0
+tok = 0
+while tok != 1 :
+    if time < 3 :
+        time = time + 1
+        if answer != guess :
+            if answer < guess :
+                print("猜错啦，再小点")
+                player = input("猜猜是什么数字吧:")
+                guess = int(player)
+            else :
+                print("猜错啦，再大点")
+                player = input("猜猜是什么数字吧:")
+                guess = int(player)
+        else :
+            tok = tok + 1
+            end = "猜对啦！棒棒XD"
+    else :
+        tok = tok + 1
+        end = "答错3次啦，游戏结束"
+print(end)
+
+这么看if和while的组合能做很多事情了
+但是发现如果while里套while会非常奇怪
+现在我非常好奇是什么样的代码才会用到循环嵌套了
